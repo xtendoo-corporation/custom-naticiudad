@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_stock_return_picking_form_naticiudad" model="ir.ui.view">
+        <field name="name">stock.return.picking.form.naticiudad</field>
+        <field name="model">stock.return.picking</field>
+        <field name="inherit_id" ref="stock.view_stock_return_picking_form"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="after">
+                <field name="return_deadline" invisible="1"/>
+                <field name="return_expired" invisible="1"/>
+                <div class="alert alert-warning" role="alert" invisible="not return_expired">
+                    El plazo de devolución venció el <field name="return_deadline" readonly="1" class="oe_inline"/>.
+                    Solo un responsable puede aceptarla.
+                </div>
+            </field>
+        </field>
+    </record>
+</odoo>

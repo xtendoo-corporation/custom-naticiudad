@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="loyalty_program_return_voucher" model="loyalty.program">
+        <field name="name">Vale de devolución</field>
+        <field name="program_type">ewallet</field>
+    </record>
+    <record id="base.main_company" model="res.company">
+        <field name="return_voucher_program_id" ref="loyalty_program_return_voucher"/>
+    </record>
+</odoo>

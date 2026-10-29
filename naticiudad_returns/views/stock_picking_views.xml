@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_picking_form_naticiudad_returns" model="ir.ui.view">
+        <field name="name">stock.picking.form.naticiudad.returns</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-warning" role="alert"
+                     invisible="not return_expired or picking_type_code != 'outgoing'">
+                    El plazo de devolución de esta entrega ha vencido.
+                </div>
+                <div class="alert alert-danger" role="alert"
+                     invisible="not pickup_alert_sent or state in ('done', 'cancel')">
+                    La recogida está fuera de plazo.
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="return_deadline" invisible="picking_type_code != 'outgoing' or not return_deadline"/>
+                <field name="pickup_deadline" invisible="not pickup_deadline"/>
+                <field name="return_voucher_id" invisible="not return_voucher_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

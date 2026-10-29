@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_naticiudad_returns" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.naticiudad.returns</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='stock']" position="inside">
+                <block title="Devoluciones de clientes" name="naticiudad_returns_setting_container">
+                    <setting string="Plazos (días laborables)">
+                        <div class="content-group">
+                            <div class="row mt8">
+                                <label for="return_days" class="col-lg-5"/>
+                                <field name="return_days"/>
+                            </div>
+                            <div class="row">
+                                <label for="pickup_days" class="col-lg-5"/>
+                                <field name="pickup_days"/>
+                            </div>
+                            <div class="row">
+                                <label for="return_calendar_id" class="col-lg-5"/>
+                                <field name="return_calendar_id"/>
+                            </div>
+                        </div>
+                    </setting>
+                    <setting string="Vale automático" help="Genera un vale al validar la recogida de una devolución.">
+                        <field name="return_voucher_auto"/>
+                        <div class="content-group" invisible="not return_voucher_auto">
+                            <div class="row mt8">
+                                <label for="return_voucher_program_id" class="col-lg-5"/>
+                                <field name="return_voucher_program_id"/>
+                            </div>
+                            <div class="row">
+                                <label for="return_voucher_validity_days" class="col-lg-5"/>
+                                <field name="return_voucher_validity_days"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
